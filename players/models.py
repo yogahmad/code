@@ -42,7 +42,11 @@ class Player(BaseModel):
         default=ChanceOfPlayingType.GREEN,
     )
     team = models.ForeignKey(
-        "teams.Team", on_delete=models.CASCADE, related_name="players"
+        "teams.Team",
+        blank=False,
+        null=False,
+        on_delete=models.CASCADE,
+        related_name="players",
     )
 
     objects = PlayerManager()

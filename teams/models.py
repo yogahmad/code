@@ -15,6 +15,12 @@ class Team(BaseModel):
     strength_attack_away = models.IntegerField(blank=False, null=False, default=0)
     strength_defence_home = models.IntegerField(blank=False, null=False, default=0)
     strength_defence_away = models.IntegerField(blank=False, null=False, default=0)
-    kit = models.ForeignKey("kits.Kit", on_delete=models.CASCADE, related_name="teams")
+    kit = models.ForeignKey(
+        "kits.Kit",
+        blank=False,
+        null=False,
+        on_delete=models.CASCADE,
+        related_name="teams",
+    )
 
     objects = TeamManager()
