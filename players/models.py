@@ -30,8 +30,19 @@ class Player(BaseModel):
     price = models.IntegerField(blank=False, null=False)
     photo_id = models.CharField(blank=False, null=False, max_length=32)
     chance_of_playing_this_round = models.IntegerField(
-        blank=False, null=False, choices=CHANGE_OF_PLAYING_TYPE_CHOICES.items(), default=ChanceOfPlayingType.GREEN,)
+        blank=False,
+        null=False,
+        choices=CHANGE_OF_PLAYING_TYPE_CHOICES.items(),
+        default=ChanceOfPlayingType.GREEN,
+    )
     chance_of_playing_next_round = models.IntegerField(
-        blank=False, null=False, choices=CHANGE_OF_PLAYING_TYPE_CHOICES.items(), default=ChanceOfPlayingType.GREEN,)
+        blank=False,
+        null=False,
+        choices=CHANGE_OF_PLAYING_TYPE_CHOICES.items(),
+        default=ChanceOfPlayingType.GREEN,
+    )
     team = models.ForeignKey(
-        "teams.Team", on_delete=models.CASCADE, related_name="players")
+        "teams.Team", on_delete=models.CASCADE, related_name="players"
+    )
+
+    objects = PlayerManager()

@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from players.models import Player
+
+
+@admin.register(Player)
+class PlayerAdmin(admin.ModelAdmin):
+    pass
