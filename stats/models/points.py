@@ -38,15 +38,22 @@ class Point(BaseModel):
     }
 
     identifier = models.CharField(
-        max_length=32, blank=False, null=False, choices=POINT_TYPE_CHOICES.items())
-    player = models.ForeignKey("players.Player",
-                               blank=False, null=False, on_delete=models.CASCADE,
-                               related_name="points",
-                               )
-    match = models.ForeignKey("matches.Match",
-                              blank=False, null=False, on_delete=models.CASCADE,
-                              related_name="points",
-                              )
+        max_length=32, blank=False, null=False, choices=POINT_TYPE_CHOICES.items()
+    )
+    player = models.ForeignKey(
+        "players.Player",
+        blank=False,
+        null=False,
+        on_delete=models.CASCADE,
+        related_name="points",
+    )
+    match = models.ForeignKey(
+        "matches.Match",
+        blank=False,
+        null=False,
+        on_delete=models.CASCADE,
+        related_name="points",
+    )
     number = models.IntegerField(blank=False, null=False, default=0)
 
     objects = PointManager()

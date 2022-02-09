@@ -39,15 +39,22 @@ class PreviousSeasonTotalPoint(BaseModel):
 
     season = models.CharField(max_length=32, blank=False, null=False)
     identifier = models.CharField(
-        max_length=32, blank=False, null=False, choices=POINT_TYPE_CHOICES.items())
-    player = models.ForeignKey("players.Player",
-                               blank=False, null=False, on_delete=models.CASCADE,
-                               related_name="previous_season_points",
-                               )
-    match = models.ForeignKey("matches.Match",
-                              blank=False, null=False, on_delete=models.CASCADE,
-                              related_name="previous_season_points",
-                              )
+        max_length=32, blank=False, null=False, choices=POINT_TYPE_CHOICES.items()
+    )
+    player = models.ForeignKey(
+        "players.Player",
+        blank=False,
+        null=False,
+        on_delete=models.CASCADE,
+        related_name="previous_season_points",
+    )
+    match = models.ForeignKey(
+        "matches.Match",
+        blank=False,
+        null=False,
+        on_delete=models.CASCADE,
+        related_name="previous_season_points",
+    )
     number = models.IntegerField(blank=False, null=False, default=0)
 
     objects = PreviousSeasonTotalPointManager()
