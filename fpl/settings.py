@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "kits",
     "teams",
     "players",
+    "gameweeks",
 ]
 
 MIDDLEWARE = [
