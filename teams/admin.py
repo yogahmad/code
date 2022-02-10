@@ -5,4 +5,5 @@ from teams.models import Team
 
 @admin.register(Team)
 class KitAdmin(admin.ModelAdmin):
-    pass
+    list_display = ["name", "short_name"]
+    ordering = ["name"]

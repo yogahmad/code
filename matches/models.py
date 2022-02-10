@@ -32,3 +32,7 @@ class Match(BaseModel):
     )
 
     objects = MatchManager()
+
+    class Meta:
+        unique_together = ("home_team", "away_team",)
+        verbose_name_plural = "Matches"

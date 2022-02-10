@@ -50,3 +50,6 @@ class ShotsData(BaseModel):
         choices=SHOT_RESULT_TYPE_CHOICES.items(),
     )
     minute = models.CharField(max_length=32, null=False, blank=False)
+
+    class Meta:
+        verbose_name_plural = "Shots data"

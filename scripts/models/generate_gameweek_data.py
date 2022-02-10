@@ -24,3 +24,6 @@ class GenerateGameweekData(BaseModel):
                 START_GAMEWEEK_MUST_BE_LESS_THAN_OR_EQUAL_TO_END_GAMEWEEK
             )
         return super().clean()
+
+    class Meta:
+        verbose_name_plural = "Generate gameweek data"
