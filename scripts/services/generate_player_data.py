@@ -2,9 +2,9 @@ import requests
 from django.db import transaction
 
 from commons.runnable import Runnable
+from players.models import Player
 from scripts.constants import FPL_BOOTSTRAP_STATIC_API_URL
 from scripts.serializers import PlayerDataRequest
-from players.models import Player
 from teams.models import Team
 
 
@@ -24,16 +24,19 @@ class GeneratePlayerDataService(Runnable):
 
             try:
                 existing_player: Player = Player.objects.get(
-                    fpl_id=player.get("id"))
+                    fpl_id=player.get("id"),
+                )
                 existing_player.first_name = player.get("first_name")
                 existing_player.last_name = player.get("second_name")
                 existing_player.display_name = player.get("web_name")
                 existing_player.price = player.get("now_cost")
                 existing_player.photo_id = player.get("photo")
                 existing_player.chance_of_playing_this_round = player.get(
-                    "chance_of_playing_this_round")
+                    "chance_of_playing_this_round"
+                )
                 existing_player.chance_of_playing_next_round = player.get(
-                    "chance_of_playing_next_round")
+                    "chance_of_playing_next_round"
+                )
                 existing_player.team = team
                 existing_player.position = player.get("element_type")
 
@@ -47,9 +50,11 @@ class GeneratePlayerDataService(Runnable):
                     price=player.get("now_cost"),
                     photo_id=player.get("photo"),
                     chance_of_playing_this_round=player.get(
-                        "chance_of_playing_this_round"),
+                        "chance_of_playing_this_round"
+                    ),
                     chance_of_playing_next_round=player.get(
-                        "chance_of_playing_next_round"),
+                        "chance_of_playing_next_round"
+                    ),
                     team=team,
                     position=player.get("element_type"),
                 )
