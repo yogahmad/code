@@ -1,4 +1,3 @@
-from pickle import NONE
 import requests
 from django.db import transaction
 from django.db.models import Q

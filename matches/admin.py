@@ -5,8 +5,15 @@ from matches.models import Match
 
 @admin.register(Match)
 class MatchAdmin(admin.ModelAdmin):
-    list_display = ["match_display_name", "gameweek_number_display", ]
-    list_filter = ["gameweek", "home_team", "away_team", ]
+    list_display = [
+        "match_display_name",
+        "gameweek_number_display",
+    ]
+    list_filter = [
+        "gameweek",
+        "home_team",
+        "away_team",
+    ]
     ordering = ["gameweek__number"]
 
     def match_display_name(self, obj):
