@@ -14,7 +14,7 @@ class MatchAdmin(admin.ModelAdmin):
         "home_team",
         "away_team",
     ]
-    ordering = ["gameweek__number"]
+    ordering = ["gameweek__number", "home_team__name", "away_team__name"]
 
     def match_display_name(self, obj):
         return "{} vs {}".format(obj.home_team.name, obj.away_team.name)
