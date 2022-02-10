@@ -1,4 +1,5 @@
-from rest_framework.serializers import Serializer, IntegerField, CharField, ListField
+from rest_framework.serializers import (CharField, IntegerField, ListField,
+                                        Serializer)
 
 
 class TeamDataSerializer(Serializer):

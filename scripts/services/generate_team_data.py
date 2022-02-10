@@ -1,5 +1,4 @@
 import requests
-
 from django.db import transaction
 
 from commons.runnable import Runnable
