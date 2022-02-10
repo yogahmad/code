@@ -16,7 +16,7 @@ class TeamBettingOdd(BaseModel):
     }
 
     identifier = models.CharField(
-        max_length=32, blank=False, null=False, choices=ODD_TYPE_CHOICES.items()
+        max_length=32, blank=False, null=False, choices=ODD_TYPE_CHOICES.items(),
     )
     team = models.ForeignKey(
         "teams.Team",
