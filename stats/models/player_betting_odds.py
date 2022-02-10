@@ -18,7 +18,10 @@ class PlayerBettingOdd(BaseModel):
     }
 
     identifier = models.CharField(
-        max_length=32, blank=False, null=False, choices=ODD_TYPE_CHOICES.items(),
+        max_length=32,
+        blank=False,
+        null=False,
+        choices=ODD_TYPE_CHOICES.items(),
     )
     player = models.ForeignKey(
         "players.Player",
