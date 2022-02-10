@@ -16,10 +16,10 @@ class Player(BaseModel):
         RED = 0
 
     class PositionType:
-        GK = "goalkeeper"
-        DEF = "defender"
-        MID = "midfielder"
-        FWD = "forward"
+        GK = 1
+        DEF = 2
+        MID = 3
+        FWD = 4
 
     CHANCE_OF_PLAYING_TYPE_CHOICES = {
         ChanceOfPlayingType.GREEN: 100,
@@ -61,7 +61,7 @@ class Player(BaseModel):
         on_delete=models.CASCADE,
         related_name="players",
     )
-    position = models.CharField(
+    position = models.IntegerField(
         max_length=16,
         blank=False,
         null=False,
