@@ -5,4 +5,4 @@ class MatchDataSerializer(Serializer):
     id = IntegerField()
     team_a = IntegerField()
     team_h = IntegerField()
-    event = IntegerField()
+    event = IntegerField(allow_null=True)

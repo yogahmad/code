@@ -25,8 +25,8 @@ class Match(BaseModel):
     )
     gameweek = models.ForeignKey(
         "gameweeks.Gameweek",
-        blank=False,
-        null=False,
+        blank=True,
+        null=True,
         on_delete=models.CASCADE,
         related_name="matches",
     )

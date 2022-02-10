@@ -50,3 +50,6 @@ class Team(BaseModel):
     )
 
     objects = TeamManager()
+
+    def __str__(self):
+        return self.name
