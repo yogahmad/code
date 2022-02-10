@@ -15,12 +15,25 @@ class Player(BaseModel):
         AMBER = 25
         RED = 0
 
-    CHANGE_OF_PLAYING_TYPE_CHOICES = {
+    class PositionType:
+        GK = "goalkeeper"
+        DEF = "defender"
+        MID = "midfielder"
+        FWD = "forward"
+
+    CHANCE_OF_PLAYING_TYPE_CHOICES = {
         ChanceOfPlayingType.GREEN: 100,
         ChanceOfPlayingType.YELLOW: 75,
         ChanceOfPlayingType.ORANGE: 50,
         ChanceOfPlayingType.AMBER: 25,
         ChanceOfPlayingType.GREEN: 0,
+    }
+
+    POSITION_TYPE_CHOICES = {
+        PositionType.GK: "Goalkeeper",
+        PositionType.DEF: "Defender",
+        PositionType.MID: "Midfielder",
+        PositionType.FWD: "Forward",
     }
 
     fpl_id = models.IntegerField(blank=False, null=False, unique=True)
@@ -32,13 +45,13 @@ class Player(BaseModel):
     chance_of_playing_this_round = models.IntegerField(
         blank=False,
         null=False,
-        choices=CHANGE_OF_PLAYING_TYPE_CHOICES.items(),
+        choices=CHANCE_OF_PLAYING_TYPE_CHOICES.items(),
         default=ChanceOfPlayingType.GREEN,
     )
     chance_of_playing_next_round = models.IntegerField(
         blank=False,
         null=False,
-        choices=CHANGE_OF_PLAYING_TYPE_CHOICES.items(),
+        choices=CHANCE_OF_PLAYING_TYPE_CHOICES.items(),
         default=ChanceOfPlayingType.GREEN,
     )
     team = models.ForeignKey(
@@ -47,6 +60,12 @@ class Player(BaseModel):
         null=False,
         on_delete=models.CASCADE,
         related_name="players",
+    )
+    position = models.CharField(
+        max_length=16,
+        blank=False,
+        null=False,
+        choices=POSITION_TYPE_CHOICES.items(),
     )
 
     objects = PlayerManager()
