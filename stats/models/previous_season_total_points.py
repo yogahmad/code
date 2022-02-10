@@ -39,7 +39,7 @@ class PreviousSeasonTotalPoint(BaseModel):
 
     season = models.CharField(max_length=32, blank=False, null=False)
     identifier = models.CharField(
-        max_length=32, blank=False, null=False, choices=POINT_TYPE_CHOICES.items()
+        max_length=32, blank=False, null=False, choices=POINT_TYPE_CHOICES.items(),
     )
     player = models.ForeignKey(
         "players.Player",

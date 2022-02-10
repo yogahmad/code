@@ -38,7 +38,10 @@ class Point(BaseModel):
     }
 
     identifier = models.CharField(
-        max_length=32, blank=False, null=False, choices=POINT_TYPE_CHOICES.items()
+        max_length=32,
+        blank=False,
+        null=False,
+        choices=POINT_TYPE_CHOICES.items(),
     )
     player = models.ForeignKey(
         "players.Player",
