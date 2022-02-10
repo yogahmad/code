@@ -44,5 +44,9 @@ class ShotsData(BaseModel):
         related_name="shots_data",
     )
     result = models.CharField(
-        max_length=32, null=False, blank=False, choices=SHOT_RESULT_TYPE_CHOICES.items(),)
+        max_length=32,
+        null=False,
+        blank=False,
+        choices=SHOT_RESULT_TYPE_CHOICES.items(),
+    )
     minute = models.CharField(max_length=32, null=False, blank=False)

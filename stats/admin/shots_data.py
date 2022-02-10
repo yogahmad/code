@@ -1,4 +1,5 @@
 from django.contrib import admin
+
 from stats.models.shots_data import ShotsData
 
 
