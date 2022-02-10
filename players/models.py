@@ -52,7 +52,6 @@ class Player(BaseModel):
         blank=True,
         null=True,
         choices=CHANCE_OF_PLAYING_TYPE_CHOICES.items(),
-        default=ChanceOfPlayingType.GREEN,
     )
     team = models.ForeignKey(
         "teams.Team",

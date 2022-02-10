@@ -50,7 +50,7 @@ class GenerateTeamDataService(Runnable):
 
         Team.objects.bulk_create(created_teams)
         Team.objects.bulk_update(
-            existing_team,
+            updated_teams,
             [
                 "fpl_id",
                 "short_name",
