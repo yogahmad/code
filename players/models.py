@@ -43,14 +43,14 @@ class Player(BaseModel):
     price = models.IntegerField(blank=False, null=False)
     photo_id = models.CharField(blank=False, null=False, max_length=32)
     chance_of_playing_this_round = models.IntegerField(
-        blank=False,
-        null=False,
+        blank=True,
+        null=True,
         choices=CHANCE_OF_PLAYING_TYPE_CHOICES.items(),
         default=ChanceOfPlayingType.GREEN,
     )
     chance_of_playing_next_round = models.IntegerField(
-        blank=False,
-        null=False,
+        blank=True,
+        null=True,
         choices=CHANCE_OF_PLAYING_TYPE_CHOICES.items(),
         default=ChanceOfPlayingType.GREEN,
     )
@@ -62,10 +62,12 @@ class Player(BaseModel):
         related_name="players",
     )
     position = models.IntegerField(
-        max_length=16,
         blank=False,
         null=False,
         choices=POSITION_TYPE_CHOICES.items(),
     )
 
     objects = PlayerManager()
+
+    def __str__(self):
+        return "{} {}".format(self.first_name, self.last_name)
