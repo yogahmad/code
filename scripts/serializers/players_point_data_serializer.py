@@ -1,5 +1,4 @@
-from rest_framework.serializers import (CharField, IntegerField, ListField,
-                                        Serializer)
+from rest_framework.serializers import IntegerField, ListField, Serializer
 
 
 class PlayersPointDataSerializer(Serializer):

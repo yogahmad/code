@@ -2,13 +2,13 @@ import requests
 from django.db import transaction
 
 from commons.runnable import Runnable
-from players.models import Player
-from scripts.constants import FPL_PLAYERS_POINT_API_URL, FPL_PLAYERS_POINT_BY_GAMEWEEKAPI_URL
-from scripts.serializers import PlayersPointDataRequest
-from teams.models import Team
-from stats.models import Point
 from matches.models import Match
+from players.models import Player
+from scripts.constants import (FPL_PLAYERS_POINT_API_URL,
+                               FPL_PLAYERS_POINT_BY_GAMEWEEKAPI_URL)
 from scripts.models import GeneratePlayersPointData
+from scripts.serializers import PlayersPointDataRequest
+from stats.models import Point
 
 
 class GeneratePlayersPointDataService(Runnable):
@@ -21,7 +21,8 @@ class GeneratePlayersPointDataService(Runnable):
             for player in players:
                 with transaction.atomic():
                     res = requests.get(
-                        FPL_PLAYERS_POINT_API_URL(player.fpl_id))
+                        FPL_PLAYERS_POINT_API_URL(player.fpl_id),
+                    )
                     serializer = PlayersPointDataRequest(data=res.json())
                     serializer.is_valid(raise_exception=True)
                     data = serializer.validated_data
@@ -37,5 +38,8 @@ class GeneratePlayersPointDataService(Runnable):
                             point_data.number = result.get(key)
                             point_data.save()
         elif hasattr(generate_data, "gameweek"):
-            res = requests.get(FPL_PLAYERS_POINT_BY_GAMEWEEKAPI_URL(
-                generate_data.gameweek.number))
+            res = requests.get(
+                FPL_PLAYERS_POINT_BY_GAMEWEEKAPI_URL(
+                    generate_data.gameweek.number,
+                )
+            )

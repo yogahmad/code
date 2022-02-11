@@ -6,13 +6,29 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('stats', '0002_alter_point_unique_together'),
+        ("stats", "0002_alter_point_unique_together"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='point',
-            name='identifier',
-            field=models.CharField(choices=[('minutes', 'Minutes'), ('goals_scored', 'Goals scored'), ('assists', 'Assists'), ('clean_sheets', 'Clean sheets'), ('goals_conceded', 'Goals conceded'), ('own_goals', 'Own goals'), ('penalties_saved', 'Penalties saved'), ('penalties_missed', 'Penalties missed'), ('yellow_cards', 'Yellow cards'), ('red_cards', 'Red cards'), ('saves', 'Saves'), ('bonus', 'Bonus')], max_length=32),
+            model_name="point",
+            name="identifier",
+            field=models.CharField(
+                choices=[
+                    ("minutes", "Minutes"),
+                    ("goals_scored", "Goals scored"),
+                    ("assists", "Assists"),
+                    ("clean_sheets", "Clean sheets"),
+                    ("goals_conceded", "Goals conceded"),
+                    ("own_goals", "Own goals"),
+                    ("penalties_saved", "Penalties saved"),
+                    ("penalties_missed", "Penalties missed"),
+                    ("yellow_cards", "Yellow cards"),
+                    ("red_cards", "Red cards"),
+                    ("saves", "Saves"),
+                    ("bonus", "Bonus"),
+                ],
+                max_length=32,
+            ),
         ),
     ]

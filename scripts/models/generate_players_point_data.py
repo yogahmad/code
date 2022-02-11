@@ -1,5 +1,6 @@
-from commons.models import BaseModel
 from django.db import models
+
+from commons.models import BaseModel
 
 
 class GeneratePlayersPointData(BaseModel):

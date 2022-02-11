@@ -8,6 +8,6 @@ class PointAdmin(admin.ModelAdmin):
 
     list_display = ["player", "identifier", "number", "match"]
     list_filter = ["identifier", "player", "player__team"]
-    ordering = ("-number"),
+    ordering = (("-number"),)
     list_select_related = ["player"]
-    search_fields = ("player__display_name"),
+    search_fields = (("player__display_name"),)
