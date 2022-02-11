@@ -15,6 +15,7 @@ class MatchAdmin(admin.ModelAdmin):
         "away_team",
     ]
     ordering = ["gameweek__number", "home_team__name", "away_team__name"]
+    search_fields = ["home_team__name", "away_team__name", "fpl_id"]
 
     def match_display_name(self, obj):
         return "{} vs {}".format(obj.home_team.name, obj.away_team.name)

@@ -39,3 +39,6 @@ class Match(BaseModel):
             "away_team",
         )
         verbose_name_plural = "Matches"
+
+    def __str__(self):
+        return "{} vs {}".format(self.home_team.name, self.away_team.name)

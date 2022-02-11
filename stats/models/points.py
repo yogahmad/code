@@ -23,18 +23,18 @@ class Point(BaseModel):
         BONUS = "bonus"
 
     POINT_TYPE_CHOICES = {
-        PointType.MINUTES: "minutes",
-        PointType.GOALS_SCORED: "goals_scored",
-        PointType.ASSISTS: "assists",
-        PointType.CLEAN_SHEETS: "clean_sheets",
-        PointType.GOALS_CONCEDED: "goals_conceded",
-        PointType.OWN_GOALS: "own_goals",
-        PointType.PENALTIES_SAVED: "penalties_saved",
-        PointType.PENALTIES_MISSED: "penalties_missed",
-        PointType.YELLOW_CARDS: "yellow_cards",
-        PointType.RED_CARDS: "red_cards",
-        PointType.SAVES: "saves",
-        PointType.BONUS: "bonus",
+        PointType.MINUTES: "Minutes",
+        PointType.GOALS_SCORED: "Goals scored",
+        PointType.ASSISTS: "Assists",
+        PointType.CLEAN_SHEETS: "Clean sheets",
+        PointType.GOALS_CONCEDED: "Goals conceded",
+        PointType.OWN_GOALS: "Own goals",
+        PointType.PENALTIES_SAVED: "Penalties saved",
+        PointType.PENALTIES_MISSED: "Penalties missed",
+        PointType.YELLOW_CARDS: "Yellow cards",
+        PointType.RED_CARDS: "Red cards",
+        PointType.SAVES: "Saves",
+        PointType.BONUS: "Bonus",
     }
 
     identifier = models.CharField(
@@ -60,3 +60,10 @@ class Point(BaseModel):
     number = models.IntegerField(blank=False, null=False, default=0)
 
     objects = PointManager()
+
+    class Meta:
+        unique_together = (
+            "identifier",
+            "player",
+            "match",
+        )
