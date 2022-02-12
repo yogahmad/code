@@ -12,4 +12,4 @@ def FPL_PLAYERS_POINT_API_URL(player_id):
 
 
 def FPL_PLAYERS_POINT_BY_GAMEWEEKAPI_URL(gameweek):
-    return "{}/api/event/{}/live/".format(_FPL_BASE_URL, gameweek)
+    return "{}/event/{}/live/".format(_FPL_BASE_URL, gameweek)

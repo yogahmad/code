@@ -6,7 +6,7 @@ from scripts.services import GeneratePlayersPointDataService
 
 @admin.register(GeneratePlayersPointData)
 class GeneratePlayerDataAdmin(admin.ModelAdmin):
-    list_display = ["team", "created_at"]
+    list_display = ["team", "gameweek", "created_at"]
     ordering = ("created_at", "team")
 
     def save_model(self, request, obj, *args, **kwargs):
