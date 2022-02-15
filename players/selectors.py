@@ -6,7 +6,9 @@ from teams.models import Team
 
 class PlayerSelector:
     @classmethod
-    def get_player_by_full_name_and_id(cls, full_name: str, id: int, team: Team) -> Player:
+    def get_player_by_full_name_and_id(
+        cls, full_name: str, id: int, team: Team
+    ) -> Player:
         players = Player.objects.filter(understat_id=id)
         if players.exists():
             return players.first()
@@ -54,6 +56,7 @@ class PlayerSelector:
         actual_name = actual_name.lower()
         current_index = 0
         for ch in actual_name:
-            if current_index < len(full_name) and full_name[current_index] == ch:
+            if (current_index < len(full_name)
+                    and full_name[current_index] == ch):
                 current_index += 1
         return current_index

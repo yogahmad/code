@@ -1,5 +1,6 @@
 import json
 from time import sleep
+
 import requests
 from django.db import transaction
 
@@ -8,9 +9,11 @@ from matches.models import Match
 from players.models import Player
 from players.selectors import PlayerSelector
 from scripts.constants import UNDERSTAT_MATCH_API
-from scripts.models.generate_underlying_stat_data import GenerateUnderlyingStatData
+from scripts.models.generate_underlying_stat_data import \
+    GenerateUnderlyingStatData
 from scripts.serializers import TeamDataRequest
-from scripts.serializers.generate_underlying_stat_data import UnderlyingStatDataRequest
+from scripts.serializers.generate_underlying_stat_data import \
+    UnderlyingStatDataRequest
 from stats.models import UnderlyingStat
 from teams.models import Team
 
@@ -34,17 +37,16 @@ class GenerateUnderlyingStatDataService(Runnable):
             away_team = None
             for player_id in data.get("h"):
                 player_data = data.get("h").get(player_id)
-                home_team = Team.objects.get(
-                    understat_id=player_data.get("team_id"))
+                home_team = Team.objects.get(understat_id=player_data.get("team_id"))
                 break
             for player_id in data.get("a"):
                 player_data = data.get("a").get(player_id)
-                away_team = Team.objects.get(
-                    understat_id=player_data.get("team_id"))
+                away_team = Team.objects.get(understat_id=player_data.get("team_id"))
                 break
 
             match = Match.objects.get(
-                home_team=home_team, away_team=away_team,
+                home_team=home_team,
+                away_team=away_team,
             )
 
             for id in data.get("h"):
@@ -111,6 +113,6 @@ class GenerateUnderlyingStatDataService(Runnable):
     @classmethod
     def _scrap_rosters_data(cls, data: str):
         index = data.find("rostersData")
-        left = data.find("\'", index) + 1
-        right = data.find("\'", left)
-        return data[left: right]
+        left = data.find("'", index) + 1
+        right = data.find("'", left)
+        return data[left:right]

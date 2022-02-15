@@ -13,9 +13,17 @@ class UnderlyingStat(BaseModel):
     shots = models.IntegerField(blank=False, null=False)
     key_passes = models.IntegerField(blank=False, null=False)
     match = models.ForeignKey(
-        "matches.Match", blank=False, null=False, on_delete=models.CASCADE,)
+        "matches.Match",
+        blank=False,
+        null=False,
+        on_delete=models.CASCADE,
+    )
     player = models.ForeignKey(
-        "players.Player", blank=False, null=False, on_delete=models.CASCADE,)
+        "players.Player",
+        blank=False,
+        null=False,
+        on_delete=models.CASCADE,
+    )
     minutes = models.IntegerField(blank=False, null=False, default=0)
 
     class Meta:

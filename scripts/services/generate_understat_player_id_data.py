@@ -1,4 +1,5 @@
 import json
+
 import requests
 from django.db import transaction
 from rest_framework import serializers
@@ -15,7 +16,6 @@ class _DataSerializer(serializers.Serializer):
 
 
 class GenerateUnderstatPlayerIdDataService(Runnable):
-
     @classmethod
     @transaction.atomic
     def run(cls, obj: GenerateUnderstatPlayerIdData):
@@ -41,6 +41,6 @@ class GenerateUnderstatPlayerIdDataService(Runnable):
     @classmethod
     def _scrap_rosters_data(cls, data: str):
         index = data.find("playersData")
-        left = data.find("\'", index) + 1
-        right = data.find("\'", left)
-        return data[left: right]
+        left = data.find("'", index) + 1
+        right = data.find("'", left)
+        return data[left:right]

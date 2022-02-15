@@ -7,7 +7,8 @@ from players.models import Player
 from scripts.constants import (FPL_PLAYERS_POINT_API_URL,
                                FPL_PLAYERS_POINT_BY_GAMEWEEKAPI_URL)
 from scripts.models import GeneratePlayersPointData
-from scripts.serializers import PlayersPointDataRequest, PlayersPointDataByGameweekRequest
+from scripts.serializers import (PlayersPointDataByGameweekRequest,
+                                 PlayersPointDataRequest)
 from stats.models import Point
 
 
