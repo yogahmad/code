@@ -48,6 +48,11 @@ class Team(BaseModel):
         on_delete=models.CASCADE,
         related_name="teams",
     )
+    understat_id = models.IntegerField(
+        null=True,
+        blank=True,
+        unique=True,
+    )
 
     objects = TeamManager()
 

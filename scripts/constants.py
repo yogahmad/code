@@ -13,3 +13,11 @@ def FPL_PLAYERS_POINT_API_URL(player_id):
 
 def FPL_PLAYERS_POINT_BY_GAMEWEEKAPI_URL(gameweek):
     return "{}/event/{}/live/".format(_FPL_BASE_URL, gameweek)
+
+
+def UNDERSTAT_MATCH_API(match_id):
+    return "https://understat.com/match/{}".format(match_id)
+
+
+def UNDERSTAT_TEAM_API(team_id):
+    return "https://understat.com/team/{}/2021".format(team_id)

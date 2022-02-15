@@ -65,6 +65,11 @@ class Player(BaseModel):
         null=False,
         choices=POSITION_TYPE_CHOICES.items(),
     )
+    understat_id = models.IntegerField(
+        blank=True,
+        null=True,
+        unique=True,
+    )
 
     objects = PlayerManager()
 
