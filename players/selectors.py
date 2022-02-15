@@ -56,7 +56,6 @@ class PlayerSelector:
         actual_name = actual_name.lower()
         current_index = 0
         for ch in actual_name:
-            if (current_index < len(full_name)
-                    and full_name[current_index] == ch):
+            if current_index < len(full_name) and full_name[current_index] == ch:
                 current_index += 1
         return current_index

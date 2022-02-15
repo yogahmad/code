@@ -7,11 +7,9 @@ from django.db import transaction
 from commons.runnable import Runnable
 from matches.models import Match
 from players.models import Player
-from players.selectors import PlayerSelector
 from scripts.constants import UNDERSTAT_MATCH_API
 from scripts.models.generate_underlying_stat_data import \
     GenerateUnderlyingStatData
-from scripts.serializers import TeamDataRequest
 from scripts.serializers.generate_underlying_stat_data import \
     UnderlyingStatDataRequest
 from stats.models import UnderlyingStat

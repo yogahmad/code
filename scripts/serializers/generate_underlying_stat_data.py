@@ -1,6 +1,4 @@
-from django.forms import CharField
-from rest_framework.serializers import (DictField, FloatField, IntegerField,
-                                        ListField, Serializer)
+from rest_framework.serializers import DictField, Serializer
 
 
 class UnderlyingStatDataRequest(Serializer):
