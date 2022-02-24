@@ -5,7 +5,7 @@ from commons.runnable import Runnable
 from matches.models import Match
 from players.models import Player
 from scripts.constants import (FPL_PLAYERS_POINT_API_URL,
-                               FPL_PLAYERS_POINT_BY_GAMEWEEKAPI_URL)
+                               FPL_PLAYERS_POINT_BY_GAMEWEEK_API_URL)
 from scripts.models import GeneratePlayersPointData
 from scripts.serializers import (PlayersPointDataByGameweekRequest,
                                  PlayersPointDataRequest)
@@ -40,7 +40,7 @@ class GeneratePlayersPointDataService(Runnable):
                             point_data.save()
         elif generate_data.gameweek:
             res = requests.get(
-                FPL_PLAYERS_POINT_BY_GAMEWEEKAPI_URL(
+                FPL_PLAYERS_POINT_BY_GAMEWEEK_API_URL(
                     generate_data.gameweek.number,
                 )
             )
@@ -68,7 +68,7 @@ class GeneratePlayersPointDataService(Runnable):
         else:
             for gameweek in range(1, 39):
                 res = requests.get(
-                    FPL_PLAYERS_POINT_BY_GAMEWEEKAPI_URL(
+                    FPL_PLAYERS_POINT_BY_GAMEWEEK_API_URL(
                         gameweek,
                     )
                 )
