@@ -22,6 +22,8 @@ class GetListPlayerAPI(APIView):
             position = serializers.CharField()
             understat_id = serializers.IntegerField(allow_null=True)
             team = serializers.CharField()
+            team_id = serializers.IntegerField()
+
         players = serializers.ListField(child=PlayerSerializer())
 
     def get(self, request: Request, **kwargs) -> Response:

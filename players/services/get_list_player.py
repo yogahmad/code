@@ -21,6 +21,7 @@ class PlayerDataclass:
     position: str
     understat_id: Optional[int]
     team: str
+    team_id: int
 
 
 @dataclass
@@ -65,6 +66,7 @@ class GetListPlayerService(Runnable):
                     position=Player.POSITION_TYPE_CHOICES.get(player.position),
                     understat_id=player.understat_id,
                     team=player.team.name,
+                    team_id=player.team.fpl_id,
                 )
             )
 
