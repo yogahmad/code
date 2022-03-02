@@ -1,9 +1,7 @@
-from collections import namedtuple
 from dataclasses import dataclass
 from typing import List, Optional
 
 from django.db.models import Q
-from django.db.models.functions import Lower
 
 from commons.runnable import Runnable
 from players.models import Player

@@ -20,7 +20,8 @@ class GenerateUnderlyingStatDataService(Runnable):
     @classmethod
     @transaction.atomic
     def run(cls, obj: GenerateUnderlyingStatData):
-        ids = obj.ids.split(",")
+        ids = obj.ids.replace(" ", "")
+        ids = ids.split(",")
         for id in ids:
             res = requests.get(UNDERSTAT_MATCH_API(id))
             sleep(2)
@@ -35,11 +36,13 @@ class GenerateUnderlyingStatDataService(Runnable):
             away_team = None
             for player_id in data.get("h"):
                 player_data = data.get("h").get(player_id)
-                home_team = Team.objects.get(understat_id=player_data.get("team_id"))
+                home_team = Team.objects.get(
+                    understat_id=player_data.get("team_id"))
                 break
             for player_id in data.get("a"):
                 player_data = data.get("a").get(player_id)
-                away_team = Team.objects.get(understat_id=player_data.get("team_id"))
+                away_team = Team.objects.get(
+                    understat_id=player_data.get("team_id"))
                 break
 
             match = Match.objects.get(

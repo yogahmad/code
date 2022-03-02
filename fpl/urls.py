@@ -21,4 +21,5 @@ urlpatterns = [
     path("grappelli/", include("grappelli.urls")),
     path("players/", include("players.urls")),
     path("teams/", include("teams.urls")),
+    path("gameweeks/", include("gameweeks.urls")),
 ]
